@@ -26,20 +26,6 @@ class Cultura(db.Base):
   
   #armamos la base de datos
   __tablename__ = 'cultura'
-  '''Table('cultura', db.Base.metadata,
-        Column('cod_localidad', Integer(), primary_key=True),
-        Column('id_provincia',Integer(), nullable=False, unique=True),
-        Column('id_departamento',Integer(), nullable=False, unique=True),
-        Column('categoria', String(50), nullable=False, unique=True),
-        Column('provincia',String(50), nullable=False, unique=True),
-        Column('localidad',String(50), nullable=False, unique=True),
-        Column('nombre',String(50), nullable=False, unique=True),
-        Column('domicilio',String(50), nullable=False, unique=True),
-        Column('codigo_postal',Integer(), nullable=False, unique=True),
-        Column('telefono',Integer(), nullable=False, unique=True),
-        Column('mail',String(80), nullable=False, unique=True),
-        Column('web',String(80), nullable=False, unique=True),
-        Column('fecha_carga',DateTime(), default=fecha))'''
   
   id = Column(Integer(), primary_key=True)
   cod_localidad = Column(Integer())
@@ -77,8 +63,6 @@ class Cultura(db.Base):
    self.mail = mail
    self.web = web
    self.fecha_carga = fecha_carga
-
-   #print("Se guardó todo en la base de datos")
 
 def __str__(self):
     return self.categoria
@@ -176,51 +160,12 @@ def descargar_biblios():
    pass
 
 def mostrar_cantidades():
-   #obtengo las categorias
-   #Query para buscar tipos de categorias
-   #query1 = "SELECT "
-   #query = "select count('categoria' = 'Espacios de Exhibición Patrimonial') from cultura"
-   #df2 = pd.read_sql_query("Select * from Album",db.engine)
-   '''query = "SELECT subcategoria FROM cultura"
-   categorias = pd.read_sql(query, db.engine)
-
-   categorias['subcategoria']'''
-
-   '''nombre_tabla = db.engine.table_names()
-   print(nombre_tabla)'''
-   '''rs = db.engine.execute("SELECT subcategoria FROM cultura")
-   df = pd.DataFrame(rs.fetchall())
-   df.columns = rs.keys()
-   print(df['subcategoria'][0])'''
-   
-   museos = 0
-   cines = 0
-   biblios = 0
-
-   '''Switch(dia):
-	  if case(1):
-		print('lunes')'''
-
-def mostrar_info_cines():
    pass
 
-#Mostrar cabecera de archivo 
-'''def ingresar_tablas(ruta_archivo_museo):
+def mostrar_info_cines():
+   pass 
 
-    archivo = pd.read_csv(ruta_archivo_museo)
-    #print("Contenido del archivo recuperado: "+archivo)
-    #for row in archivo: 
-     # print("Provincia es: "+row[2][IdProvincia])''' 
-
-def crear_db(ruta_museo, ruta_biblio, ruta_sala):
-  #Elimina y luego crea todo en la base de datos
-  #Cultura.metadata.drop_all(db.engine)
-  #Cultura.metadata.create_all(db.engine)
-
-  #archivo = open(ruta_archivo_museo, "rb")
-
-  #df = pd.read_csv(ruta_museo)
-  
+def crear_db(ruta_museo, ruta_biblio, ruta_sala):  
   #leo los archivos
   museo = pd.read_csv(ruta_museo)
   objeto = json.loads(museo.to_json())
